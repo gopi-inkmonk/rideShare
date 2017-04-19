@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
+import firebase from 'firebase';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
+
+import {Header, Button} from './common';
 
 import styles from '../style/style';
 
@@ -24,9 +27,17 @@ class AlbumList extends Component {
     console.log(this.state);
 
     return (
-      <ScrollView>
-        {this.renderAlbums()}
-      </ScrollView>
+      <View style={{flex:1}}>
+        <Header headerText={'Welcome'} />
+        <ScrollView>
+          {this.renderAlbums()}
+        </ScrollView>
+        <View style={{height:45}}>
+          <Button onPress={() => firebase.auth().signOut()}>
+            Log out
+          </Button>
+        </View>
+      </View>
     );
   }
 };

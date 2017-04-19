@@ -37,11 +37,7 @@ class rideShare extends Component {
   renderContent(){
     switch (this.state.loggedIn){
       case true:
-        return (
-          <Button onPress={() => firebase.auth().signOut()}>
-            Log out
-          </Button>
-        );
+        return <AlbumList/>;
       case false:
         return <LoginForm />;
       default:
@@ -52,9 +48,7 @@ class rideShare extends Component {
   render() {
     return (
       <View style={{flex:1}}>
-        <Header headerText={'Login'} />
         {this.renderContent()}
-        {/* <AlbumList/> */}
       </View>
     );
   }
